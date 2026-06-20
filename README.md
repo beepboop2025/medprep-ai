@@ -1,3 +1,8 @@
+<!-- textura-banner -->
+<div align="center">
+  <a href="https://github.com/beepboop2025/medprep-ai"><img src="./banner.svg" width="100%" alt="medprep-ai" /></a>
+</div>
+
 # MedPrep AI
 
 AI-powered medical exam preparation with 4,000+ MCQs across 21 subjects. Built with Next.js 16 and Claude.
