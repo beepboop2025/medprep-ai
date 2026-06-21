@@ -5,6 +5,9 @@
 
 # MedPrep AI
 
+![tests](https://github.com/beepboop2025/medprep-ai/actions/workflows/tests.yml/badge.svg)
+![coverage](https://img.shields.io/badge/coverage-98%25-brightgreen)
+
 AI-powered medical exam preparation with 4,000+ MCQs across 21 subjects. Built with Next.js 16 and Claude.
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
