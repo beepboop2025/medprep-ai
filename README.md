@@ -130,6 +130,14 @@ This project uses the [MedMCQA](https://medmcqa.github.io/) dataset:
 }
 ```
 
+**Licensing & ownership:** The MedMCQA dataset is released by its authors under the MIT
+License. The questions are real AIIMS &amp; NEET-PG entrance-exam questions; the content in
+`src/lib/questions.json` belongs to the MedMCQA authors and is used here under their terms,
+**not** claimed as original to this project. This project's own code is MIT-licensed separately
+(below). The "AI" in MedPrep AI refers to the Claude-powered tutor and explanations — the
+question bank itself is sourced from MedMCQA, not AI-generated.
+
 ## License
 
-MIT
+This project's **code** is licensed under the MIT License. The bundled **question data** is
+the property of the MedMCQA authors (see *Dataset* above) and is not relicensed here.
