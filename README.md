@@ -5,10 +5,10 @@
 
 # MedPrep AI
 
-AI-powered medical exam preparation with 4,000+ MCQs across 21 subjects. Built with Next.js 16 and Claude.
+Medical exam practice with 4,183 MedMCQA questions across 21 subjects and an optional retrieval-grounded tutor.
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
-![Claude](https://img.shields.io/badge/AI-Claude%20Sonnet%204.6-orange)
+![Tutor](https://img.shields.io/badge/Tutor-Optional-orange)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
@@ -21,19 +21,19 @@ AI-powered medical exam preparation with 4,000+ MCQs across 21 subjects. Built w
 - Filter by subject, configurable quiz size (5/10/20/50)
 - Live score tracking with progress bar
 
-### AI Tutor (Claude-powered)
-- Ask any medical question — get exam-relevant explanations
-- **RAG pipeline**: retrieves the 5 most relevant questions from the database for every query using IDF-weighted keyword search
+### Retrieval-grounded tutor (optional)
+- Ask a medical question and receive a model response with retrieved MedMCQA context
+- **Retrieval pipeline**: selects the 5 most relevant questions using IDF-weighted keyword search
 - Click "Ask AI to explain further" on any quiz question for deep analysis
-- Mnemonics, differential diagnoses, and high-yield exam tips
-- Streaming responses via AI SDK v6
+- Prompts for mnemonics, differential diagnoses, and exam-focused review
+- Streaming responses through AI SDK v6
 
 ## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
 | Framework | Next.js 16 (App Router, Turbopack) |
-| AI | Claude Sonnet 4.6 via AI SDK v6 |
+| Optional tutor | Claude via AI SDK v6 |
 | Retrieval | IDF-weighted keyword search (zero-dependency RAG) |
 | Styling | Tailwind CSS v4, Geist font |
 | Language | TypeScript 5 |
@@ -65,7 +65,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-> **Note**: Quiz mode works without an API key. The AI Tutor requires an Anthropic API key.
+> **Note**: Quiz mode works without an API key. The optional tutor requires an Anthropic API key and can produce incorrect explanations. Use it for exam practice, not clinical guidance, and verify medical claims against current authoritative sources.
 
 ## Architecture
 
@@ -80,7 +80,7 @@ src/
 │       └── check/route.ts    # Answer verification
 ├── components/
 │   ├── quiz-card.tsx         # MCQ card with option selection
-│   ├── chat-panel.tsx        # AI tutor chat interface
+│   ├── chat-panel.tsx        # Optional tutor interface
 │   ├── subject-picker.tsx    # Subject filter sidebar
 │   └── score-bar.tsx         # Score + progress display
 └── lib/
@@ -93,13 +93,13 @@ src/
 
 Instead of fine-tuning, we use Retrieval-Augmented Generation:
 
-1. User sends a query to the AI Tutor
+1. The user sends a query to the tutor
 2. The query is tokenized and matched against an inverted index of all 4,183 questions
 3. Top 5 matches are ranked by IDF score (rare medical terms get higher weight)
 4. Matched questions + explanations are injected into Claude's system prompt
 5. Claude generates a response grounded in the actual dataset
 
-This approach is more accurate than fine-tuning for factual Q&A, cheaper (no training cost), and instantly updatable.
+This approach keeps the retrieved question context inspectable and can be updated without training a new model.
 
 ## Fine-Tuning Data (Optional)
 
