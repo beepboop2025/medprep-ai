@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "MedPrep AI",
   description:
-    "AI-powered medical exam preparation with 4,000+ MCQs across 21 subjects. Powered by Claude.",
+    "Practice 4,183 MedMCQA questions across 21 subjects with an optional retrieval-grounded tutor.",
   keywords: [
     "medical exam",
     "USMLE",
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     "medical education",
   ],
   openGraph: {
-    title: "MedPrep AI — Medical Exam Study Agent",
+    title: "MedPrep AI | MedMCQA exam practice",
     description:
-      "Practice 4,000+ medical MCQs with an AI tutor powered by Claude. Covers 21 subjects from Anatomy to Surgery.",
+      "Practice 4,183 MedMCQA questions across 21 subjects. The optional tutor uses retrieved question context.",
     type: "website",
   },
 };
